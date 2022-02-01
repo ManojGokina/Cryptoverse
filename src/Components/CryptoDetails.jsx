@@ -16,6 +16,7 @@ import {
 } from "@ant-design/icons";
 import { useGetCryptoDetailsQuery , useGetCryptoHistoryQuery } from "../services/cryptoApi";
 import LineChart from "./lineChart";
+import Loading from "./Loading";
 
 
 
@@ -28,7 +29,7 @@ function CryptoDetails() {
   const { data: coinHistory } = useGetCryptoHistoryQuery({coinId , timePeriod});
   const cryptoDetails = data?.data?.coin;
 
-  if(isFetching) return 'Loading...';
+  if(isFetching) return <Loading/>;
   console.log(data);
   console.log(coinHistory);
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
